@@ -1,36 +1,67 @@
-# Next.js with Bun runtime
+## Create a `next.js` app with `bun`
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with Bun.
+---
 
-## Getting Started
+### Install `bun`
 
-### Cloning the repo
+First run the following command to check `bun` is installed or not
 
 ```sh
-bun create next ./app
+bun -v
 ```
 
-First, run the development server:
+If you don't have `bun` installed then run the following command to install `bun`
 
-```bash
+```sh
+curl https://bun.sh/install | bash
+```
+
+### Create a next app
+
+Now run the following command to create a next app
+
+```sh
+bun create next [your-app-name]
+```
+
+It will create a new directory with the name of your app. To start the app run the following command
+
+```sh
+cd your-app-name
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Build production bundle for next app
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+We have to update `next.js` version before we build our next app
 
-## Learn More
+```sh
+bun a next@latest
+```
 
-To learn more about Next.js, take a look at the following resources:
+Here we update to the latest version of `next` for avoiding any kind of build issue
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Adding `scripts` to your package.json
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+We can add the following scripts to our package.json file
 
-## Deploy on Vercel
+```json
+{
+  "scripts": {
+    "start": "next start",
+    "build": "next build"
+  }
+}
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+And we can run the following command to build the production bundle
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```sh
+bun run build
+```
+
+To run the production build you can fire following command
+
+```sh
+bun start
+```
